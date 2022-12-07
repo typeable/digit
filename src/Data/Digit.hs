@@ -23,7 +23,6 @@ module Data.Digit
   ) where
 
 import Control.Lens
-import Control.Lens.Missing
 import Data.Foldable as F
 import Data.List as L
 import Data.List.NonEmpty as NE
@@ -117,6 +116,7 @@ _Digits = below _Digit
 
 _DigitsText :: Prism' Text (NE.NonEmpty Digit)
 _DigitsText = from packed . _Digits . _NonEmptyList
+  where _NonEmptyList = prism' NE.toList NE.nonEmpty
 
 _DigitsInt :: Integral n => Prism' n NormalDigits
 _DigitsInt = prism' (digitsToNum . unDigits) positiveIntToDigits

@@ -12,7 +12,6 @@ library
   build-depends:       base
                      , QuickCheck
                      , lens
-                     , missing-lens
                      , regex-applicative
                      , text
   default-language:    Haskell2010
